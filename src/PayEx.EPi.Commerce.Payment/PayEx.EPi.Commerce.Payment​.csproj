@@ -370,6 +370,7 @@
     <Compile Include="PayExPaymentGateway.cs" />
     <Compile Include="Models\Result\TransactionResult.cs" />
     <Compile Include="PayExService.cs" />
+    <Compile Include="PayExSettingsEntry.cs" />
     <Compile Include="PayExXmlSerializer.cs" />
     <Compile Include="Payment\ResultBase.cs" />
     <Compile Include="Payment\TransactionStatus.cs" />
