@@ -1,7 +1,7 @@
 ﻿
 namespace PayEx.EPi.Commerce.Payment.Contracts
 {
-    internal interface IPayExSettings
+    public interface IPayExSettings
     {
         long AccountNumber { get; }
         string EncryptionKey { get; }

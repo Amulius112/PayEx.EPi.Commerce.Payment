@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.UI.WebControls;
-using EPiServer.Data.Dynamic;
 using EPiServer.Events.Clients;
 using EPiServer.PlugIn;
-using EPiServer.ServiceLocation;
-using Mediachase.Commerce;
 using PayEx.EPi.Commerce.Payment.Contracts;
 
 namespace PayEx.EPi.Commerce.Payment
@@ -17,15 +12,8 @@ namespace PayEx.EPi.Commerce.Payment
         internal static Guid BroadcastSettingsChangedEventId = new Guid("75714741-2ec2-4317-8110-1b1b63818602");
         private static PayExSettings _instance;
 
-        public long AccountNumber
-        {
-            get
-            {
-                var currentMarketId = ServiceLocator.Current.GetInstance<ICurrentMarket>().GetCurrentMarket().MarketId.Value;
-                var settingsForMarket = DynamicDataStoreFactory.Instance.GetStore(typeof(PayExSettingsEntry)).Items<PayExSettingsEntry>().FirstOrDefault(entry => entry.MarketId == currentMarketId);
-                return settingsForMarket != null ? settingsForMarket.AccountNumber : 0;
-            }
-        }
+        [PlugInProperty(Description = "Merchants PayEx account number", AdminControl = typeof(TextBox), AdminControlValue = "Text")]
+        public long AccountNumber { get; set; }
 
         [PlugInProperty(Description = "PayEx Encryption Key", AdminControl = typeof(TextBox), AdminControlValue = "Text")]
         public string EncryptionKey { get; set; }
